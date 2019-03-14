@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import './Menu.scss';
+import MenuItem from '../MenuItem';
 
 class Menu extends Component {
   render() { 
     return (
       <nav className="menu">
         <ul className="menu__list">
-          <li className="menu__item">Catalog</li>
-          <li className="menu__item">Edition</li>
+          <MenuItem title="Catalog" url="/" />
+          <MenuItem title="Edition" url="/edition" />
         </ul>
       </nav>
     );
