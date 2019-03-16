@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
 import { books } from '../../data/bookData';
+import { allGenres } from '../../data/genreData';
 import Header from '../Header';
 import Main from '../Main';
 
@@ -10,10 +11,7 @@ class App extends Component {
 
 		this.state = {
 			books: books,
-			genres: [
-				'fantasy',
-				'science'
-			],
+			genres: allGenres,
 			filters: {
 				genres: []
 			},
