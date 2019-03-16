@@ -1,8 +1,6 @@
 # Book catalog
 
-This is a web app to manage the books catalog of a bookstore. 
-
-I'm still learning so please, if you spot a bug, want to improve my code or just show me another way to do things, don't hesitate to open an issue or send a PR!
+This is a web app to manage the books catalog of a bookstore. Books can be filtered by genre, and there's an edition dashboard where the user can edit, add and remove books.
 
 ## How to use this repo
 
