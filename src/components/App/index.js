@@ -80,8 +80,28 @@ class App extends Component {
 		}
 	}
 
-	handleFieldChange() {
-		console.log('hello');
+	handleFieldChange(ind, value, name) {
+		this.setState(prevState => {
+			const newState = {
+				books: prevState.books.map((item, index) => {
+					if (index === ind) {
+						if (name === "price" && value) {
+							item = {
+								...item,
+								[name]: parseFloat(value)
+							}
+						} else {
+							item = {
+								...item,
+								[name]: value
+							};
+						}
+					}
+					return item;
+				})
+			};
+			return newState;
+		});
 	}
 
 	render() {

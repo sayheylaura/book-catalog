@@ -3,12 +3,23 @@ import PropTypes from 'prop-types';
 import Input from '../Input';
 
 class FormItem extends Component {
+	constructor(props) {
+		super(props);
+
+		this.onFieldChange = this.onFieldChange.bind(this);
+	}
+
+	onFieldChange(e) {
+		const { value, name } = e.currentTarget;
+		const { ind, handleFieldChange } = this.props;
+		handleFieldChange(ind, value, name);
+	}
+
 	render() {
 		const {
 			ind,
 			books,
-			book,
-			handleFieldChange
+			book
 		} = this.props;
 
 		const {
@@ -20,6 +31,7 @@ class FormItem extends Component {
 		return (
 			<div className="form__item">
 				<h2 className="form-item__description">{`Book ${ind + 1} of ${books.length}`}</h2>
+
 				<Input
 					labelContent="Title"
 					labelStyles="field__label"
@@ -29,7 +41,7 @@ class FormItem extends Component {
 					inputName="title"
 					inputValue={title}
 					example="Ex: Mafalda"
-					handleInputChange={handleFieldChange}
+					handleInputChange={this.onFieldChange}
 				/>
 
 				<Input
@@ -41,7 +53,7 @@ class FormItem extends Component {
 					inputName="price"
 					inputValue={price}
 					example="Ex: 9.99"
-					handleInputChange={handleFieldChange}
+					handleInputChange={this.onFieldChange}
 				/>
 			</div>
 		);
