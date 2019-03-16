@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import Filters from '../Filters';
 import BookList from '../BookList';
+import Loader from '../Loader';
 
 class Main extends Component {
 	render() {
@@ -10,8 +11,21 @@ class Main extends Component {
 			books,
 			genres,
 			filters,
+			isLoading,
 			handleBoxChange
 		} = this.props;
+
+		const contentToRender = (
+			<Fragment>
+				<Filters
+					genres={genres}
+					filters={filters}
+					handleBoxChange={handleBoxChange}
+				/>
+				<BookList books={books} />
+			</Fragment>
+		);
+
 		return (
 			<main className="app__main">
 				<Switch>
@@ -19,16 +33,11 @@ class Main extends Component {
 						exact
 						path="/"
 						render={() => {
-							return (
-								<Fragment>
-									<Filters
-										genres={genres}
-										filters={filters}
-										handleBoxChange={handleBoxChange}
-									/>
-									<BookList books={books} />
-								</Fragment>
-							);
+							if (isLoading) {
+								return <Loader />
+							} else {
+								return contentToRender;
+							}
 						}}
 					/>
 				</Switch>
@@ -45,7 +54,8 @@ Main.propTypes = {
 		PropTypes.string.isRequired
 	).isRequired,
 	filters: PropTypes.object.isRequired,
-	handleBoxChange: PropTypes.func.isRequired
+	isLoading: PropTypes.bool.isRequired,
+	handleBoxChange: PropTypes.func.isRequired,
 }
 
 export default Main;

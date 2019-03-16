@@ -16,10 +16,22 @@ class App extends Component {
 			],
 			filters: {
 				genres: []
-			}
+			},
+			isLoading: true
 		}
 
 		this.handleBoxChange = this.handleBoxChange.bind(this);
+		this.fakeApiRequest = this.fakeApiRequest.bind(this);
+	}
+
+	componentDidMount() {
+		setTimeout(this.fakeApiRequest, 2000);
+	}
+
+	fakeApiRequest() {
+		this.setState({
+			isLoading: false
+		})
 	}
 
 	handleBoxChange(e) {
@@ -60,7 +72,7 @@ class App extends Component {
 	}
 
 	render() {
-		const { genres, filters } = this.state;
+		const { genres, filters, isLoading } = this.state;
 		const filteredBooks = this.filterBooksByGenre();
 
 		return (
@@ -70,6 +82,7 @@ class App extends Component {
 					books={filteredBooks}
 					genres={genres}
 					filters={filters}
+					isLoading={isLoading}
 					handleBoxChange={this.handleBoxChange}
 				/>
 			</div>
