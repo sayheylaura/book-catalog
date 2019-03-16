@@ -47,13 +47,27 @@ class App extends Component {
 		})
 	}
 
+	filterBooksByGenre() {
+		const { books, filters } = this.state;
+		const { genres } = filters;
+
+		if (genres.length === 0) {
+			return books;
+		} else {
+			const filteredBooks = books.filter(book => genres.includes(book.genre));
+			return filteredBooks;
+		}
+	}
+
 	render() {
-		const { books, genres, filters } = this.state;
+		const { genres, filters } = this.state;
+		const filteredBooks = this.filterBooksByGenre();
+
 		return (
 			<div className="App">
 				<Header />
 				<Main
-					books={books}
+					books={filteredBooks}
 					genres={genres}
 					filters={filters}
 					handleBoxChange={this.handleBoxChange}
