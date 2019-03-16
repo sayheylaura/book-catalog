@@ -22,6 +22,7 @@ class App extends Component {
 		this.handleBoxChange = this.handleBoxChange.bind(this);
 		this.handleFieldChange = this.handleFieldChange.bind(this);
 		this.addItem = this.addItem.bind(this);
+		this.removeItem = this.removeItem.bind(this);
 	}
 
 	componentDidMount() {
@@ -115,8 +116,19 @@ class App extends Component {
 		this.setState(prevState => {
 			const newState = {
 				books: prevState.books.concat(newBook)
-			}
-			return newState
+			};
+			return newState;
+		})
+	}
+
+	removeItem(ind) {
+		this.setState(prevState => {
+			const newState = {
+				books: prevState.books.filter((item, index) => {
+					return index !== ind;
+				})
+			};
+			return newState;
 		})
 	}
 
@@ -142,6 +154,7 @@ class App extends Component {
 					handleBoxChange={this.handleBoxChange}
 					handleFieldChange={this.handleFieldChange}
 					addItem={this.addItem}
+					removeItem={this.removeItem}
 				/>
 			</div>
 		);

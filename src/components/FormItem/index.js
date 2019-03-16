@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Input from '../Input';
+import Button from '../Button';
 
 class FormItem extends Component {
 	constructor(props) {
 		super(props);
 
 		this.onFieldChange = this.onFieldChange.bind(this);
+		this.onRemoveItem = this.onRemoveItem.bind(this);
 	}
 
 	onFieldChange(e) {
 		const { value, name } = e.currentTarget;
 		const { ind, handleFieldChange } = this.props;
 		handleFieldChange(ind, value, name);
+	}
+
+	onRemoveItem() {
+		const { ind, removeItem } = this.props;
+		removeItem(ind);
 	}
 
 	render() {
@@ -55,6 +62,14 @@ class FormItem extends Component {
 					example="Ex: 9.99"
 					handleInputChange={this.onFieldChange}
 				/>
+
+				<Button
+					buttonType="button"
+					buttonStyles="btn btn-add"
+					handleBtnClick={this.onRemoveItem}
+				>
+					Remove
+				</Button>
 			</div>
 		);
 	}
@@ -66,7 +81,8 @@ FormItem.propTypes = {
 		PropTypes.object.isRequired
 	).isRequired,
 	book: PropTypes.object.isRequired,
-	handleFieldChange: PropTypes.func.isRequired
+	handleFieldChange: PropTypes.func.isRequired,
+	removeItem: PropTypes.func.isRequired
 }
 
 export default FormItem;

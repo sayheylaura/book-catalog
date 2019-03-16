@@ -16,7 +16,8 @@ class Main extends Component {
 			isLoading,
 			handleBoxChange,
 			handleFieldChange,
-			addItem
+			addItem,
+			removeItem
 		} = this.props;
 
 		const contentToRender = (
@@ -53,6 +54,7 @@ class Main extends Component {
 									books={books}
 									handleFieldChange={handleFieldChange}
 									addItem={addItem}
+									removeItem={removeItem}
 								/>
 							);
 						}}
@@ -77,7 +79,8 @@ Main.propTypes = {
 	isLoading: PropTypes.bool.isRequired,
 	handleBoxChange: PropTypes.func.isRequired,
 	handleFieldChange: PropTypes.func.isRequired,
-	addItem: PropTypes.func.isRequired
+	addItem: PropTypes.func.isRequired,
+	removeItem: PropTypes.func.isRequired
 }
 
 export default Main;

@@ -8,7 +8,8 @@ class Form extends Component {
 		const {
 			books,
 			handleFieldChange,
-			addItem
+			addItem,
+			removeItem
 		} = this.props;
 
 		return (
@@ -21,6 +22,7 @@ class Form extends Component {
 							books={books}
 							book={book}
 							handleFieldChange={handleFieldChange}
+							removeItem={removeItem}
 						/>
 					);
 				})}
@@ -42,7 +44,8 @@ Form.propTypes = {
 		PropTypes.object.isRequired
 	).isRequired,
 	handleFieldChange: PropTypes.func.isRequired,
-	addItem: PropTypes.func.isRequired
+	addItem: PropTypes.func.isRequired,
+	removeItem: PropTypes.func.isRequired
 }
 
 export default Form;
