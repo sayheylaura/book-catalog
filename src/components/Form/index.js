@@ -4,10 +4,20 @@ import FormItem from '../FormItem';
 
 class Form extends Component {
 	render() {
-		const { books } = this.props;
+		const { books, handleFieldChange } = this.props;
 		return (
 			<form className="app__form">
-				{books.map((book, ind) => <FormItem key={ind} book={book} />)}
+				{books.map((book, ind) => {
+					return (
+						<FormItem
+							key={ind}
+							ind={ind}
+							books={books}
+							book={book}
+							handleFieldChange={handleFieldChange}
+						/>
+					);
+				})}
 			</form>
 		);
 	}
@@ -16,7 +26,8 @@ class Form extends Component {
 Form.propTypes = {
 	books: PropTypes.arrayOf(
 		PropTypes.object.isRequired
-	).isRequired
+	).isRequired,
+	handleFieldChange: PropTypes.func.isRequired
 }
 
 export default Form;

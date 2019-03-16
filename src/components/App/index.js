@@ -18,8 +18,9 @@ class App extends Component {
 			isLoading: true
 		}
 
-		this.handleBoxChange = this.handleBoxChange.bind(this);
 		this.fakeApiRequest = this.fakeApiRequest.bind(this);
+		this.handleBoxChange = this.handleBoxChange.bind(this);
+		this.handleFieldChange = this.handleFieldChange.bind(this);
 	}
 
 	componentDidMount() {
@@ -79,6 +80,10 @@ class App extends Component {
 		}
 	}
 
+	handleFieldChange() {
+		console.log('hello');
+	}
+
 	render() {
 		const {
 			books,
@@ -99,6 +104,7 @@ class App extends Component {
 					filters={filters}
 					isLoading={isLoading}
 					handleBoxChange={this.handleBoxChange}
+					handleFieldChange={this.handleFieldChange}
 				/>
 			</div>
 		);
