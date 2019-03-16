@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Checkbox extends Component {
 	render() {
-		const { genre, handleBoxChange } = this.props;
+		const { genre, genres, handleBoxChange } = this.props;
 		return (
 			<label className="checkbox__label" htmlFor={genre}>
 				<input
@@ -13,7 +13,7 @@ class Checkbox extends Component {
 					name={genre}
 					value={genre}
 					onChange={handleBoxChange}
-					checked={false}
+					checked={genres.includes(genre)}
 				/>
 				{genre}
 			</label>
@@ -23,6 +23,7 @@ class Checkbox extends Component {
 
 Checkbox.propTypes = {
 	genre: PropTypes.string.isRequired,
+	genres: PropTypes.array.isRequired,
 	handleBoxChange: PropTypes.func.isRequired
 }
 

@@ -6,7 +6,7 @@ class Filters extends Component {
 	render() {
 		const {
 			genres,
-			//filters,
+			filters,
 			handleBoxChange
 		} = this.props;
 		return (
@@ -17,6 +17,7 @@ class Filters extends Component {
 						<Checkbox
 							key={ind}
 							genre={genre}
+							genres={filters.genres}
 							handleBoxChange={handleBoxChange}
 						/>
 					);

@@ -22,8 +22,29 @@ class App extends Component {
 		this.handleBoxChange = this.handleBoxChange.bind(this);
 	}
 
-	handleBoxChange() {
-		console.log('hello');
+	handleBoxChange(e) {
+		const { checked, name } = e.currentTarget;
+
+		this.setState(prevState => {
+			const currentSelectedGenres = prevState.filters.genres;
+
+			let newSelectedGenres;
+
+			if (checked) {
+				newSelectedGenres = currentSelectedGenres.concat(name);
+			} else {
+				newSelectedGenres = currentSelectedGenres.filter(genre => genre !== name)
+			}
+
+			const newState = {
+				filters: {
+					...prevState.filters,
+					genres: newSelectedGenres
+				}
+			}
+
+			return newState;
+		})
 	}
 
 	render() {
