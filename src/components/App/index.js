@@ -11,7 +11,7 @@ class App extends Component {
 
 		this.state = {
 			books: books,
-			genres: allGenres,
+			allGenres: allGenres,
 			filters: {
 				genres: []
 			},
@@ -59,18 +59,33 @@ class App extends Component {
 
 	filterBooksByGenre() {
 		const { books, filters } = this.state;
-		const { genres } = filters;
+		const { genres: selectedGenres } = filters;
 
-		if (genres.length === 0) {
+		if (selectedGenres.length === 0) {
 			return books;
 		} else {
-			const filteredBooks = books.filter(book => genres.includes(book.genre));
+			let filteredBooks = [];
+
+			for (const book of books) {
+				const genres = book.genres;
+				for (const genre of genres) {
+					if ((selectedGenres.includes(genre)) && (!filteredBooks.includes(book))) {
+						filteredBooks.push(book);
+					}
+				}
+			}
+
 			return filteredBooks;
 		}
 	}
 
 	render() {
-		const { genres, filters, isLoading } = this.state;
+		const {
+			allGenres,
+			filters,
+			isLoading
+		} = this.state;
+
 		const filteredBooks = this.filterBooksByGenre();
 
 		return (
@@ -78,7 +93,7 @@ class App extends Component {
 				<Header />
 				<Main
 					books={filteredBooks}
-					genres={genres}
+					allGenres={allGenres}
 					filters={filters}
 					isLoading={isLoading}
 					handleBoxChange={this.handleBoxChange}

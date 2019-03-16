@@ -3,8 +3,18 @@ import PropTypes from 'prop-types';
 
 class BookItem extends Component {
 	render() {
-		const { books, book, ind } = this.props;
-		const { title, price, genres } = book;
+		const {
+			books,
+			book,
+			ind
+		} = this.props;
+
+		const {
+			title,
+			price,
+			genres
+		} = book;
+
 		return (
 			<article className="book">
 				<h2 className="book__description">{`Book ${ind + 1} of ${books.length}`}</h2>
@@ -13,11 +23,11 @@ class BookItem extends Component {
 				<div className="book__genres-wrapper">
 					<div className="genres__title">Genres:</div>
 					<ul className="genres__list">
-						{genres.map((genre, ind) => {
-							return (
-								<li key={ind} className="genres__item">{genre}</li>
-							);
-						})}
+						{genres.map((genre, ind) => (
+							<li key={ind} className="genres__item">
+								{genre}
+							</li>
+						))}
 					</ul>
 				</div>
 			</article>

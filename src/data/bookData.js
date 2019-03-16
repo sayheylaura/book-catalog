@@ -16,14 +16,14 @@ const books = [
 	},
 	{
 		title: "The Pillars of the Earth",
-		price: 11.55,
+		price: 8.99,
 		genres: [
 			"historical fiction"
 		]
 	},
 	{
 		title: "Fall of Giants",
-		price: 11.55,
+		price: 9.89,
 		genres: [
 			"historical fiction"
 		]

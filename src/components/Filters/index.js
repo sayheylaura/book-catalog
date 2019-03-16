@@ -5,19 +5,20 @@ import Checkbox from '../Checkbox';
 class Filters extends Component {
 	render() {
 		const {
-			genres,
+			allGenres,
 			filters,
 			handleBoxChange
 		} = this.props;
+
 		return (
 			<section className="app__filters">
-				<p>Filter books by genre</p>
-				{genres.map((genre, ind) => {
+				<p className="filters__description">Filter books by genre</p>
+				{allGenres.map((genre, ind) => {
 					return (
 						<Checkbox
 							key={ind}
 							genre={genre}
-							genres={filters.genres}
+							genreFilters={filters.genres}
 							handleBoxChange={handleBoxChange}
 						/>
 					);
@@ -28,7 +29,7 @@ class Filters extends Component {
 }
 
 Filters.propTypes = {
-	genres: PropTypes.arrayOf(
+	allGenres: PropTypes.arrayOf(
 		PropTypes.string.isRequired
 	).isRequired,
 	filters: PropTypes.object.isRequired,

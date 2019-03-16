@@ -9,7 +9,7 @@ class Main extends Component {
 	render() {
 		const {
 			books,
-			genres,
+			allGenres,
 			filters,
 			isLoading,
 			handleBoxChange
@@ -18,7 +18,7 @@ class Main extends Component {
 		const contentToRender = (
 			<Fragment>
 				<Filters
-					genres={genres}
+					allGenres={allGenres}
 					filters={filters}
 					handleBoxChange={handleBoxChange}
 				/>
@@ -50,7 +50,7 @@ Main.propTypes = {
 	books: PropTypes.arrayOf(
 		PropTypes.object.isRequired
 	).isRequired,
-	genres: PropTypes.arrayOf(
+	allGenres: PropTypes.arrayOf(
 		PropTypes.string.isRequired
 	).isRequired,
 	filters: PropTypes.object.isRequired,
