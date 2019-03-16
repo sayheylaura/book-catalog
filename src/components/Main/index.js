@@ -4,11 +4,13 @@ import { Route, Switch } from 'react-router-dom';
 import Filters from '../Filters';
 import BookList from '../BookList';
 import Loader from '../Loader';
+import Form from '../Form';
 
 class Main extends Component {
 	render() {
 		const {
 			books,
+			filteredBooks,
 			allGenres,
 			filters,
 			isLoading,
@@ -22,7 +24,7 @@ class Main extends Component {
 					filters={filters}
 					handleBoxChange={handleBoxChange}
 				/>
-				<BookList books={books} />
+				<BookList filteredBooks={filteredBooks} />
 			</Fragment>
 		);
 
@@ -40,6 +42,11 @@ class Main extends Component {
 							}
 						}}
 					/>
+
+					<Route
+						path="/edition"
+						render={() => <Form books={books} />}
+					/>
 				</Switch>
 			</main>
 		);
@@ -48,6 +55,9 @@ class Main extends Component {
 
 Main.propTypes = {
 	books: PropTypes.arrayOf(
+		PropTypes.object.isRequired
+	).isRequired,
+	filteredBooks: PropTypes.arrayOf(
 		PropTypes.object.isRequired
 	).isRequired,
 	allGenres: PropTypes.arrayOf(

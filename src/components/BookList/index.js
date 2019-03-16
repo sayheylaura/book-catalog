@@ -4,15 +4,15 @@ import BookItem from '../BookItem';
 
 class BookList extends Component {
 	render() {
-		const { books } = this.props;
+		const { filteredBooks } = this.props;
 		return (
 			<section className="app__books">
 				<ul className="books__list">
-					{books.map((book, ind) => {
+					{filteredBooks.map((book, ind) => {
 						return (
 							<li key={ind} className="books__item">
 								<BookItem
-									books={books}
+									books={filteredBooks}
 									book={book}
 									ind={ind}
 								/>
@@ -26,7 +26,7 @@ class BookList extends Component {
 }
 
 BookList.propTypes = {
-	books: PropTypes.arrayOf(
+	filteredBooks: PropTypes.arrayOf(
 		PropTypes.object.isRequired
 	).isRequired
 }

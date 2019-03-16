@@ -81,6 +81,7 @@ class App extends Component {
 
 	render() {
 		const {
+			books,
 			allGenres,
 			filters,
 			isLoading
@@ -92,7 +93,8 @@ class App extends Component {
 			<div className="App">
 				<Header />
 				<Main
-					books={filteredBooks}
+					books={books}
+					filteredBooks={filteredBooks}
 					allGenres={allGenres}
 					filters={filters}
 					isLoading={isLoading}
