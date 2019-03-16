@@ -21,6 +21,7 @@ class App extends Component {
 		this.fakeApiRequest = this.fakeApiRequest.bind(this);
 		this.handleBoxChange = this.handleBoxChange.bind(this);
 		this.handleFieldChange = this.handleFieldChange.bind(this);
+		this.addItem = this.addItem.bind(this);
 	}
 
 	componentDidMount() {
@@ -104,6 +105,21 @@ class App extends Component {
 		});
 	}
 
+	addItem() {
+		const newBook = {
+			title: "",
+			price: "",
+			genres: []
+		}
+
+		this.setState(prevState => {
+			const newState = {
+				books: prevState.books.concat(newBook)
+			}
+			return newState
+		})
+	}
+
 	render() {
 		const {
 			books,
@@ -125,6 +141,7 @@ class App extends Component {
 					isLoading={isLoading}
 					handleBoxChange={this.handleBoxChange}
 					handleFieldChange={this.handleFieldChange}
+					addItem={this.addItem}
 				/>
 			</div>
 		);

@@ -15,7 +15,8 @@ class Main extends Component {
 			filters,
 			isLoading,
 			handleBoxChange,
-			handleFieldChange
+			handleFieldChange,
+			addItem
 		} = this.props;
 
 		const contentToRender = (
@@ -46,7 +47,15 @@ class Main extends Component {
 
 					<Route
 						path="/edition"
-						render={() => <Form books={books} handleFieldChange={handleFieldChange} />}
+						render={() => {
+							return (
+								<Form
+									books={books}
+									handleFieldChange={handleFieldChange}
+									addItem={addItem}
+								/>
+							);
+						}}
 					/>
 				</Switch>
 			</main>
@@ -67,7 +76,8 @@ Main.propTypes = {
 	filters: PropTypes.object.isRequired,
 	isLoading: PropTypes.bool.isRequired,
 	handleBoxChange: PropTypes.func.isRequired,
-	handleFieldChange: PropTypes.func.isRequired
+	handleFieldChange: PropTypes.func.isRequired,
+	addItem: PropTypes.func.isRequired
 }
 
 export default Main;
