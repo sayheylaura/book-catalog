@@ -6,7 +6,12 @@ import BookList from '../BookList';
 
 class Main extends Component {
 	render() {
-		const { books } = this.props;
+		const {
+			books,
+			genres,
+			filters,
+			handleBoxChange
+		} = this.props;
 		return (
 			<main className="app__main">
 				<Switch>
@@ -16,7 +21,11 @@ class Main extends Component {
 						render={() => {
 							return (
 								<Fragment>
-									<Filters />
+									<Filters
+										genres={genres}
+										filters={filters}
+										handleBoxChange={handleBoxChange}
+									/>
 									<BookList books={books} />
 								</Fragment>
 							);
@@ -31,7 +40,12 @@ class Main extends Component {
 Main.propTypes = {
 	books: PropTypes.arrayOf(
 		PropTypes.object.isRequired
-	).isRequired
+	).isRequired,
+	genres: PropTypes.arrayOf(
+		PropTypes.string.isRequired
+	).isRequired,
+	filters: PropTypes.object.isRequired,
+	handleBoxChange: PropTypes.func.isRequired
 }
 
 export default Main;
