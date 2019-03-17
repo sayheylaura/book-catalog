@@ -133,8 +133,25 @@ class App extends Component {
 		})
 	}
 
-	handleAddGenre() {
-		console.log('add genre');
+	handleAddGenre(parentInd) {
+		const newItem = "";
+
+		this.setState(prevState => {
+			const newState = {
+				books: prevState.books.map((book, ind) => {
+					if(ind !== parentInd) {
+						return book;
+					} else {
+						book = {
+							...book,
+							genres: book.genres.concat(newItem)
+						}
+						return book;
+					}
+				})
+			};
+			return newState
+		})
 	}
 
 	render() {

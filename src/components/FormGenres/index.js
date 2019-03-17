@@ -4,8 +4,20 @@ import Button from '../Button';
 import FormGenreItem from '../FormGenreItem';
 
 class FormGenres extends Component {
+	constructor(props) {
+		super(props);
+
+		this.onAddGenre = this.onAddGenre.bind(this);
+	}
+
+	onAddGenre() {
+		const { parentInd, handleAddGenre } = this.props;
+		handleAddGenre(parentInd);
+	}
+
 	render() {
-		const { genres, handleAddGenre } = this.props;
+		const { genres } = this.props;
+
 		return (
 			<div className="form__genres-wrapper">
 				<h3 className="form__genres-title">
@@ -28,7 +40,7 @@ class FormGenres extends Component {
 				<Button
 					buttonType="button"
 					buttonStyles="btn btn-add"
-					handleBtnClick={handleAddGenre}
+					handleBtnClick={this.onAddGenre}
 				>
 					Add genre
 				</Button>
@@ -38,6 +50,7 @@ class FormGenres extends Component {
 }
 
 FormGenres.propTypes = {
+	parentInd: PropTypes.number.isRequired,
 	genres: PropTypes.arrayOf(
 		PropTypes.string
 	).isRequired,

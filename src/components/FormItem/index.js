@@ -67,7 +67,11 @@ class FormItem extends Component {
 					handleInputChange={this.onBookUpdate}
 				/>
 
-				<FormGenres genres={genres} handleAddGenre={handleAddGenre} />
+				<FormGenres
+					parentInd={ind}
+					genres={genres}
+					handleAddGenre={handleAddGenre}
+				/>
 
 				<Button
 					buttonType="button"
