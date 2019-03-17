@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Input from '../Input';
 import Button from '../Button';
+import FormGenres from '../FormGenres';
 
 class FormItem extends Component {
 	constructor(props) {
@@ -32,12 +33,14 @@ class FormItem extends Component {
 		const {
 			title,
 			price,
-			//genres
+			genres
 		} = book;
 
 		return (
-			<div className="form__item">
-				<h2 className="form-item__description">{`Book ${ind + 1} of ${books.length}`}</h2>
+			<li className="form__item">
+				<h2 className="form__item-description">
+					{`Book ${ind + 1} of ${books.length}`}
+				</h2>
 
 				<Input
 					labelContent="Title"
@@ -63,14 +66,16 @@ class FormItem extends Component {
 					handleInputChange={this.onFieldChange}
 				/>
 
+				<FormGenres genres={genres} />
+
 				<Button
 					buttonType="button"
-					buttonStyles="btn btn-add"
+					buttonStyles="btn btn-remove"
 					handleBtnClick={this.onRemoveItem}
 				>
-					Remove
+					Remove book
 				</Button>
-			</div>
+			</li>
 		);
 	}
 }

@@ -14,25 +14,27 @@ class Form extends Component {
 
 		return (
 			<form className="app__form">
-				{books.map((book, ind) => {
-					return (
-						<FormItem
-							key={ind}
-							ind={ind}
-							books={books}
-							book={book}
-							handleFieldChange={handleFieldChange}
-							removeItem={removeItem}
-						/>
-					);
-				})}
+				<ul className="form__books-list">
+					{books.map((book, ind) => {
+						return (
+							<FormItem
+								key={ind}
+								ind={ind}
+								books={books}
+								book={book}
+								handleFieldChange={handleFieldChange}
+								removeItem={removeItem}
+							/>
+						);
+					})}
+				</ul>
 
 				<Button
 					buttonType="button"
 					buttonStyles="btn btn-add"
 					handleBtnClick={addItem}
 				>
-					Add
+					Add book
 				</Button>
 			</form>
 		);
