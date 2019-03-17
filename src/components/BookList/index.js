@@ -11,12 +11,11 @@ class BookList extends Component {
 				<ul className="books__list">
 					{filteredBooks.map((book, ind) => {
 						return (
-							<li key={ind} className="books__item">
-								<BookItem
-									filteredBooks={filteredBooks}
-									book={book}
-								/>
-							</li>
+							<BookItem
+								key={ind}
+								filteredBooks={filteredBooks}
+								book={book}
+							/>
 						);
 					})}
 				</ul>

@@ -14,21 +14,32 @@ class BookItem extends Component {
 		} = book;
 
 		return (
-			<article className="book">
+			<li className="books__item">
 				<h2 className="book__description">{`Book ${id} of ${filteredBooks.length}`}</h2>
-				<div className="book__title">Title: {title}</div>
-				<div className="book__price">Price: ${price}</div>
+				<h3 className="book__title">
+					Title:<span className="book__content"> {title ? title : 'no data'}</span>
+				</h3>
+
+				<h3 className="book__title">
+					Price:<span className="book__content"> {price ? `$${price}` : 'no data'}</span>
+				</h3>
+
 				<div className="book__genres-wrapper">
-					<div className="genres__title">Genres:</div>
-					<ul className="genres__list">
-						{genres.map((genre, ind) => (
-							<li key={ind} className="genres__item">
-								{genre}
-							</li>
-						))}
-					</ul>
+					<h3 className="book__title">Genres:</h3>
+
+					{(genres.length === 0) ? (
+						<span className="book__content">no data</span>
+					) : (
+						<ul className="genres__list">
+							{genres.map((genre, ind) => (
+								<li key={ind} className="genres__item">
+									{genre ? genre : 'no data'}
+								</li>
+							))}
+						</ul>
+					)}
 				</div>
-			</article>
+			</li>
 		);
 	}
 }
