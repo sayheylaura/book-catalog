@@ -4,10 +4,13 @@ import { book } from '../../services/propTypes';
 
 class BookItem extends Component {
 	render() {
-		const { filteredBooks, book } = this.props;
+		const {
+			bookInd,
+			filteredBooks,
+			book
+		} = this.props;
 
 		const {
-			id,
 			title,
 			price,
 			genres
@@ -15,7 +18,7 @@ class BookItem extends Component {
 
 		return (
 			<li className="books__item">
-				<h2 className="book__description">{`Book ${id} of ${filteredBooks.length}`}</h2>
+				<h2 className="book__description">{`Book ${bookInd + 1} of ${filteredBooks.length}`}</h2>
 				<h3 className="book__title">
 					Title:<span className="book__content"> {title ? title : 'no data'}</span>
 				</h3>
@@ -45,6 +48,7 @@ class BookItem extends Component {
 }
 
 BookItem.propTypes = {
+	bookInd: PropTypes.number.isRequired,
 	filteredBooks: PropTypes.arrayOf(
 		PropTypes.shape(book).isRequired
 	).isRequired,

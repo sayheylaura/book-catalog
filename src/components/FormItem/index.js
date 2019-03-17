@@ -36,7 +36,6 @@ class FormItem extends Component {
 		} = this.props;
 
 		const {
-			id,
 			title,
 			price,
 			genres
@@ -45,7 +44,7 @@ class FormItem extends Component {
 		return (
 			<li className="form__item">
 				<h2 className="form__item-description">
-					{`Book ${id} of ${books.length}`}
+					{`Book ${bookInd + 1} of ${books.length}`}
 				</h2>
 
 				<Input

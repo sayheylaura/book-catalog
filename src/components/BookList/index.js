@@ -13,6 +13,7 @@ class BookList extends Component {
 						return (
 							<BookItem
 								key={ind}
+								bookInd={ind}
 								filteredBooks={filteredBooks}
 								book={book}
 							/>
