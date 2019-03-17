@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { defaultBooks } from '../../data/bookData';
+import { defaultGenres } from '../../data/genreData';
 import './App.scss';
-import { books } from '../../data/bookData';
-import { allGenres } from '../../data/genreData';
 import Header from '../Header';
 import Main from '../Main';
 
@@ -10,8 +10,8 @@ class App extends Component {
 		super(props);
 
 		this.state = {
-			books: books,
-			allGenres: allGenres,
+			books: defaultBooks,
+			allGenres: defaultGenres,
 			filters: {
 				genres: []
 			},
@@ -19,6 +19,7 @@ class App extends Component {
 		}
 
 		this.fakeApiRequest = this.fakeApiRequest.bind(this);
+		this.updateGenres = this.updateGenres.bind(this);
 		this.handleBoxChange = this.handleBoxChange.bind(this);
 		this.handleBookUpdate = this.handleBookUpdate.bind(this);
 		this.handleAddBook = this.handleAddBook.bind(this);
@@ -38,12 +39,31 @@ class App extends Component {
 		})
 	}
 
+	updateGenres() {
+		const { books } = this.state;
+		let newGenres = [];
+
+		for (const book of books) {
+			const genres = book.genres;
+			for (const genre of genres) {
+				if (!newGenres.includes(genre)) {
+					newGenres.push(genre);
+				}
+			}
+		}
+
+		newGenres.sort();
+
+		this.setState({
+			allGenres: newGenres
+		})
+	}
+
 	handleBoxChange(e) {
 		const { checked, name } = e.currentTarget;
 
 		this.setState(prevState => {
 			const currentSelectedGenres = prevState.filters.genres;
-
 			let newSelectedGenres;
 
 			if (checked) {
@@ -66,12 +86,11 @@ class App extends Component {
 	filterBooksByGenre() {
 		const { books, filters } = this.state;
 		const { genres: selectedGenres } = filters;
+		let filteredBooks = [];
 
 		if (selectedGenres.length === 0) {
-			return books;
+			filteredBooks = books;
 		} else {
-			let filteredBooks = [];
-
 			for (const book of books) {
 				const genres = book.genres;
 				for (const genre of genres) {
@@ -80,9 +99,9 @@ class App extends Component {
 					}
 				}
 			}
-
-			return filteredBooks;
 		}
+
+		return filteredBooks;
 	}
 
 	handleBookUpdate(bookInd, value, name) {
@@ -99,18 +118,19 @@ class App extends Component {
 							book = {
 								...book,
 								[name]: value
-							};
+							}
 						}
 					}
 					return book;
 				})
-			};
+			}
 			return newState;
 		})
 	}
 
-	handleAddBook() {
+	handleAddBook(arr) {
 		const newBook = {
+			id: arr.length + 1,
 			title: "",
 			price: "",
 			genres: []
@@ -119,7 +139,7 @@ class App extends Component {
 		this.setState(prevState => {
 			const newState = {
 				books: prevState.books.concat(newBook)
-			};
+			}
 			return newState;
 		})
 	}
@@ -130,7 +150,7 @@ class App extends Component {
 				books: prevState.books.filter((book, ind) => {
 					return ind !== bookInd;
 				})
-			};
+			}
 			return newState;
 		})
 	}
@@ -154,7 +174,7 @@ class App extends Component {
 						return book;
 					}
 				})
-			};
+			}
 			return newState;
 		})
 	}
@@ -175,8 +195,8 @@ class App extends Component {
 						return book;
 					}
 				})
-			};
-			return newState
+			}
+			return newState;
 		})
 	}
 
@@ -190,7 +210,7 @@ class App extends Component {
 						book = {
 							...book,
 							genres: book.genres.filter((genre, ind) => {
-								return ind !== genreInd
+								return ind !== genreInd;
 							})
 						}
 						return book;
@@ -220,6 +240,7 @@ class App extends Component {
 					allGenres={allGenres}
 					filters={filters}
 					isLoading={isLoading}
+					updateGenres={this.updateGenres}
 					handleBoxChange={this.handleBoxChange}
 					handleBookUpdate={this.handleBookUpdate}
 					handleAddBook={this.handleAddBook}

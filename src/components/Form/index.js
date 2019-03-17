@@ -4,11 +4,22 @@ import FormItem from '../FormItem';
 import Button from '../Button';
 
 class Form extends Component {
+	constructor(props) {
+		super(props);
+
+		this.onAddBook = this.onAddBook.bind(this);
+	}
+
+	onAddBook() {
+		const { books, handleAddBook } = this.props;
+		handleAddBook(books);
+	}
+
 	render() {
 		const {
 			books,
+			updateGenres,
 			handleBookUpdate,
-			handleAddBook,
 			handleRemoveBook,
 			handleGenreUpdate,
 			handleAddGenre,
@@ -25,6 +36,7 @@ class Form extends Component {
 								bookInd={ind}
 								books={books}
 								book={book}
+								updateGenres={updateGenres}
 								handleBookUpdate={handleBookUpdate}
 								handleRemoveBook={handleRemoveBook}
 								handleGenreUpdate={handleGenreUpdate}
@@ -38,7 +50,7 @@ class Form extends Component {
 				<Button
 					buttonType="button"
 					buttonStyles="btn btn-add"
-					handleBtnClick={handleAddBook}
+					handleBtnClick={this.onAddBook}
 				>
 					Add book
 				</Button>
@@ -51,6 +63,7 @@ Form.propTypes = {
 	books: PropTypes.arrayOf(
 		PropTypes.object.isRequired
 	).isRequired,
+	updateGenres: PropTypes.func.isRequired,
 	handleBookUpdate: PropTypes.func.isRequired,
 	handleAddBook: PropTypes.func.isRequired,
 	handleRemoveBook: PropTypes.func.isRequired,

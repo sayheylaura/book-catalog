@@ -10,6 +10,12 @@ class FormGenres extends Component {
 		this.onAddGenre = this.onAddGenre.bind(this);
 	}
 
+	componentDidUpdate(prevState) {
+		if(this.props.books !== prevState.books) {
+			this.props.updateGenres();
+		}
+	}
+
 	onAddGenre() {
 		const { bookInd, handleAddGenre } = this.props;
 		handleAddGenre(bookInd);
@@ -62,6 +68,7 @@ FormGenres.propTypes = {
 	genres: PropTypes.arrayOf(
 		PropTypes.string
 	).isRequired,
+	updateGenres: PropTypes.func.isRequired,
 	handleGenreUpdate: PropTypes.func.isRequired,
 	handleAddGenre: PropTypes.func.isRequired,
 	handleRemoveGenre: PropTypes.func.isRequired

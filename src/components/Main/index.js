@@ -14,6 +14,7 @@ class Main extends Component {
 			allGenres,
 			filters,
 			isLoading,
+			updateGenres,
 			handleBoxChange,
 			handleBookUpdate,
 			handleAddBook,
@@ -55,6 +56,7 @@ class Main extends Component {
 							return (
 								<Form
 									books={books}
+									updateGenres={updateGenres}
 									handleBookUpdate={handleBookUpdate}
 									handleAddBook={handleAddBook}
 									handleRemoveBook={handleRemoveBook}
@@ -83,6 +85,7 @@ Main.propTypes = {
 	).isRequired,
 	filters: PropTypes.object.isRequired,
 	isLoading: PropTypes.bool.isRequired,
+	updateGenres: PropTypes.func.isRequired,
 	handleBoxChange: PropTypes.func.isRequired,
 	handleBookUpdate: PropTypes.func.isRequired,
 	handleAddBook: PropTypes.func.isRequired,

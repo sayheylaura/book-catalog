@@ -1,14 +1,16 @@
-import { books } from './bookData';
+import { defaultBooks } from './bookData';
 
-let allGenres = [];
+let defaultGenres = [];
 
-for (const book of books) {
+for (const book of defaultBooks) {
 	const genres = book.genres;
 	for (const genre of genres) {
-		if (!allGenres.includes(genre)) {
-			allGenres.push(genre);
+		if (!defaultGenres.includes(genre)) {
+			defaultGenres.push(genre);
 		}
 	}
 }
 
-export { allGenres };
+defaultGenres.sort();
+
+export { defaultGenres };

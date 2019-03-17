@@ -28,6 +28,7 @@ class FormItem extends Component {
 			bookInd,
 			books,
 			book,
+			updateGenres,
 			handleGenreUpdate,
 			handleAddGenre,
 			handleRemoveGenre
@@ -53,7 +54,7 @@ class FormItem extends Component {
 					inputType="text"
 					inputName="title"
 					inputValue={title}
-					example="Ex: Mafalda"
+					example="Ex: The Martian"
 					handleInputChange={this.onBookUpdate}
 				/>
 
@@ -71,7 +72,9 @@ class FormItem extends Component {
 
 				<FormGenres
 					bookInd={bookInd}
+					books={books}
 					genres={genres}
+					updateGenres={updateGenres}
 					handleGenreUpdate={handleGenreUpdate}
 					handleAddGenre={handleAddGenre}
 					handleRemoveGenre={handleRemoveGenre}
@@ -95,6 +98,7 @@ FormItem.propTypes = {
 		PropTypes.object.isRequired
 	).isRequired,
 	book: PropTypes.object.isRequired,
+	updateGenres: PropTypes.func.isRequired,
 	handleBookUpdate: PropTypes.func.isRequired,
 	handleRemoveBook: PropTypes.func.isRequired,
 	handleGenreUpdate: PropTypes.func.isRequired,
