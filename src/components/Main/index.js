@@ -15,9 +15,10 @@ class Main extends Component {
 			filters,
 			isLoading,
 			handleBoxChange,
-			handleFieldChange,
-			addItem,
-			removeItem
+			handleBookUpdate,
+			handleAddBook,
+			handleRemoveBook,
+			handleAddGenre
 		} = this.props;
 
 		const contentToRender = (
@@ -52,9 +53,10 @@ class Main extends Component {
 							return (
 								<Form
 									books={books}
-									handleFieldChange={handleFieldChange}
-									addItem={addItem}
-									removeItem={removeItem}
+									handleBookUpdate={handleBookUpdate}
+									handleAddBook={handleAddBook}
+									handleRemoveBook={handleRemoveBook}
+									handleAddGenre={handleAddGenre}
 								/>
 							);
 						}}
@@ -78,9 +80,10 @@ Main.propTypes = {
 	filters: PropTypes.object.isRequired,
 	isLoading: PropTypes.bool.isRequired,
 	handleBoxChange: PropTypes.func.isRequired,
-	handleFieldChange: PropTypes.func.isRequired,
-	addItem: PropTypes.func.isRequired,
-	removeItem: PropTypes.func.isRequired
+	handleBookUpdate: PropTypes.func.isRequired,
+	handleAddBook: PropTypes.func.isRequired,
+	handleRemoveBook: PropTypes.func.isRequired,
+	handleAddGenre: PropTypes.func.isRequired
 }
 
 export default Main;

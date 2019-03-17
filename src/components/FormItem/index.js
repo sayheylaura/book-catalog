@@ -8,26 +8,27 @@ class FormItem extends Component {
 	constructor(props) {
 		super(props);
 
-		this.onFieldChange = this.onFieldChange.bind(this);
-		this.onRemoveItem = this.onRemoveItem.bind(this);
+		this.onBookUpdate = this.onBookUpdate.bind(this);
+		this.onRemoveBook = this.onRemoveBook.bind(this);
 	}
 
-	onFieldChange(e) {
+	onBookUpdate(e) {
 		const { value, name } = e.currentTarget;
-		const { ind, handleFieldChange } = this.props;
-		handleFieldChange(ind, value, name);
+		const { ind, handleBookUpdate } = this.props;
+		handleBookUpdate(ind, value, name);
 	}
 
-	onRemoveItem() {
-		const { ind, removeItem } = this.props;
-		removeItem(ind);
+	onRemoveBook() {
+		const { ind, handleRemoveBook } = this.props;
+		handleRemoveBook(ind);
 	}
 
 	render() {
 		const {
 			ind,
 			books,
-			book
+			book,
+			handleAddGenre
 		} = this.props;
 
 		const {
@@ -51,7 +52,7 @@ class FormItem extends Component {
 					inputName="title"
 					inputValue={title}
 					example="Ex: Mafalda"
-					handleInputChange={this.onFieldChange}
+					handleInputChange={this.onBookUpdate}
 				/>
 
 				<Input
@@ -63,15 +64,15 @@ class FormItem extends Component {
 					inputName="price"
 					inputValue={price}
 					example="Ex: 9.99"
-					handleInputChange={this.onFieldChange}
+					handleInputChange={this.onBookUpdate}
 				/>
 
-				<FormGenres genres={genres} />
+				<FormGenres genres={genres} handleAddGenre={handleAddGenre} />
 
 				<Button
 					buttonType="button"
 					buttonStyles="btn btn-remove"
-					handleBtnClick={this.onRemoveItem}
+					handleBtnClick={this.onRemoveBook}
 				>
 					Remove book
 				</Button>
@@ -86,8 +87,9 @@ FormItem.propTypes = {
 		PropTypes.object.isRequired
 	).isRequired,
 	book: PropTypes.object.isRequired,
-	handleFieldChange: PropTypes.func.isRequired,
-	removeItem: PropTypes.func.isRequired
+	handleBookUpdate: PropTypes.func.isRequired,
+	handleRemoveBook: PropTypes.func.isRequired,
+	handleAddGenre: PropTypes.func.isRequired
 }
 
 export default FormItem;

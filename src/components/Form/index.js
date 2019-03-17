@@ -7,9 +7,10 @@ class Form extends Component {
 	render() {
 		const {
 			books,
-			handleFieldChange,
-			addItem,
-			removeItem
+			handleBookUpdate,
+			handleAddBook,
+			handleRemoveBook,
+			handleAddGenre
 		} = this.props;
 
 		return (
@@ -22,8 +23,9 @@ class Form extends Component {
 								ind={ind}
 								books={books}
 								book={book}
-								handleFieldChange={handleFieldChange}
-								removeItem={removeItem}
+								handleBookUpdate={handleBookUpdate}
+								handleRemoveBook={handleRemoveBook}
+								handleAddGenre={handleAddGenre}
 							/>
 						);
 					})}
@@ -32,7 +34,7 @@ class Form extends Component {
 				<Button
 					buttonType="button"
 					buttonStyles="btn btn-add"
-					handleBtnClick={addItem}
+					handleBtnClick={handleAddBook}
 				>
 					Add book
 				</Button>
@@ -45,9 +47,10 @@ Form.propTypes = {
 	books: PropTypes.arrayOf(
 		PropTypes.object.isRequired
 	).isRequired,
-	handleFieldChange: PropTypes.func.isRequired,
-	addItem: PropTypes.func.isRequired,
-	removeItem: PropTypes.func.isRequired
+	handleBookUpdate: PropTypes.func.isRequired,
+	handleAddBook: PropTypes.func.isRequired,
+	handleRemoveBook: PropTypes.func.isRequired,
+	handleAddGenre: PropTypes.func.isRequired
 }
 
 export default Form;

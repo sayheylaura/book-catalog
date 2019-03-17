@@ -20,9 +20,10 @@ class App extends Component {
 
 		this.fakeApiRequest = this.fakeApiRequest.bind(this);
 		this.handleBoxChange = this.handleBoxChange.bind(this);
-		this.handleFieldChange = this.handleFieldChange.bind(this);
-		this.addItem = this.addItem.bind(this);
-		this.removeItem = this.removeItem.bind(this);
+		this.handleBookUpdate = this.handleBookUpdate.bind(this);
+		this.handleAddBook = this.handleAddBook.bind(this);
+		this.handleRemoveBook = this.handleRemoveBook.bind(this);
+		this.handleAddGenre = this.handleAddGenre.bind(this);
 	}
 
 	componentDidMount() {
@@ -82,7 +83,7 @@ class App extends Component {
 		}
 	}
 
-	handleFieldChange(ind, value, name) {
+	handleBookUpdate(ind, value, name) {
 		this.setState(prevState => {
 			const newState = {
 				books: prevState.books.map((item, index) => {
@@ -106,7 +107,7 @@ class App extends Component {
 		});
 	}
 
-	addItem() {
+	handleAddBook() {
 		const newBook = {
 			title: "",
 			price: "",
@@ -121,7 +122,7 @@ class App extends Component {
 		})
 	}
 
-	removeItem(ind) {
+	handleRemoveBook(ind) {
 		this.setState(prevState => {
 			const newState = {
 				books: prevState.books.filter((item, index) => {
@@ -130,6 +131,10 @@ class App extends Component {
 			};
 			return newState;
 		})
+	}
+
+	handleAddGenre() {
+		console.log('add genre');
 	}
 
 	render() {
@@ -152,9 +157,10 @@ class App extends Component {
 					filters={filters}
 					isLoading={isLoading}
 					handleBoxChange={this.handleBoxChange}
-					handleFieldChange={this.handleFieldChange}
-					addItem={this.addItem}
-					removeItem={this.removeItem}
+					handleBookUpdate={this.handleBookUpdate}
+					handleAddBook={this.handleAddBook}
+					handleRemoveBook={this.handleRemoveBook}
+					handleAddGenre={this.handleAddGenre}
 				/>
 			</div>
 		);

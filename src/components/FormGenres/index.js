@@ -5,7 +5,7 @@ import FormGenreItem from '../FormGenreItem';
 
 class FormGenres extends Component {
 	render() {
-		const { genres, addItem } = this.props;
+		const { genres, handleAddGenre } = this.props;
 		return (
 			<div className="form__genres-wrapper">
 				<h3 className="form__genres-title">
@@ -28,7 +28,7 @@ class FormGenres extends Component {
 				<Button
 					buttonType="button"
 					buttonStyles="btn btn-add"
-					handleBtnClick={addItem}
+					handleBtnClick={handleAddGenre}
 				>
 					Add genre
 				</Button>
@@ -40,7 +40,8 @@ class FormGenres extends Component {
 FormGenres.propTypes = {
 	genres: PropTypes.arrayOf(
 		PropTypes.string
-	).isRequired
+	).isRequired,
+	handleAddGenre: PropTypes.func.isRequired
 }
 
 export default FormGenres;
