@@ -14,20 +14,21 @@ class FormItem extends Component {
 
 	onBookUpdate(e) {
 		const { value, name } = e.currentTarget;
-		const { ind, handleBookUpdate } = this.props;
-		handleBookUpdate(ind, value, name);
+		const { bookInd, handleBookUpdate } = this.props;
+		handleBookUpdate(bookInd, value, name);
 	}
 
 	onRemoveBook() {
-		const { ind, handleRemoveBook } = this.props;
-		handleRemoveBook(ind);
+		const { bookInd, handleRemoveBook } = this.props;
+		handleRemoveBook(bookInd);
 	}
 
 	render() {
 		const {
-			ind,
+			bookInd,
 			books,
 			book,
+			handleGenreUpdate,
 			handleAddGenre,
 			handleRemoveGenre
 		} = this.props;
@@ -41,7 +42,7 @@ class FormItem extends Component {
 		return (
 			<li className="form__item">
 				<h2 className="form__item-description">
-					{`Book ${ind + 1} of ${books.length}`}
+					{`Book ${bookInd + 1} of ${books.length}`}
 				</h2>
 
 				<Input
@@ -69,8 +70,9 @@ class FormItem extends Component {
 				/>
 
 				<FormGenres
-					bookInd={ind}
+					bookInd={bookInd}
 					genres={genres}
+					handleGenreUpdate={handleGenreUpdate}
 					handleAddGenre={handleAddGenre}
 					handleRemoveGenre={handleRemoveGenre}
 				/>
@@ -88,13 +90,14 @@ class FormItem extends Component {
 }
 
 FormItem.propTypes = {
-	ind: PropTypes.number.isRequired,
+	bookInd: PropTypes.number.isRequired,
 	books: PropTypes.arrayOf(
 		PropTypes.object.isRequired
 	).isRequired,
 	book: PropTypes.object.isRequired,
 	handleBookUpdate: PropTypes.func.isRequired,
 	handleRemoveBook: PropTypes.func.isRequired,
+	handleGenreUpdate: PropTypes.func.isRequired,
 	handleAddGenre: PropTypes.func.isRequired,
 	handleRemoveGenre: PropTypes.func.isRequired
 }

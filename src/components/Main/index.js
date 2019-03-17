@@ -18,6 +18,7 @@ class Main extends Component {
 			handleBookUpdate,
 			handleAddBook,
 			handleRemoveBook,
+			handleGenreUpdate,
 			handleAddGenre,
 			handleRemoveGenre
 		} = this.props;
@@ -57,6 +58,7 @@ class Main extends Component {
 									handleBookUpdate={handleBookUpdate}
 									handleAddBook={handleAddBook}
 									handleRemoveBook={handleRemoveBook}
+									handleGenreUpdate={handleGenreUpdate}
 									handleAddGenre={handleAddGenre}
 									handleRemoveGenre={handleRemoveGenre}
 								/>
@@ -85,6 +87,7 @@ Main.propTypes = {
 	handleBookUpdate: PropTypes.func.isRequired,
 	handleAddBook: PropTypes.func.isRequired,
 	handleRemoveBook: PropTypes.func.isRequired,
+	handleGenreUpdate: PropTypes.func.isRequired,
 	handleAddGenre: PropTypes.func.isRequired,
 	handleRemoveGenre: PropTypes.func.isRequired
 }

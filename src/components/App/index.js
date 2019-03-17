@@ -23,6 +23,7 @@ class App extends Component {
 		this.handleBookUpdate = this.handleBookUpdate.bind(this);
 		this.handleAddBook = this.handleAddBook.bind(this);
 		this.handleRemoveBook = this.handleRemoveBook.bind(this);
+		this.handleGenreUpdate = this.handleGenreUpdate.bind(this);
 		this.handleAddGenre = this.handleAddGenre.bind(this);
 		this.handleRemoveGenre = this.handleRemoveGenre.bind(this);
 	}
@@ -84,28 +85,28 @@ class App extends Component {
 		}
 	}
 
-	handleBookUpdate(ind, value, name) {
+	handleBookUpdate(bookInd, value, name) {
 		this.setState(prevState => {
 			const newState = {
-				books: prevState.books.map((item, index) => {
-					if (index === ind) {
+				books: prevState.books.map((book, ind) => {
+					if (ind === bookInd) {
 						if (name === "price" && value) {
-							item = {
-								...item,
+							book = {
+								...book,
 								[name]: parseFloat(value)
 							}
 						} else {
-							item = {
-								...item,
+							book = {
+								...book,
 								[name]: value
 							};
 						}
 					}
-					return item;
+					return book;
 				})
 			};
 			return newState;
-		});
+		})
 	}
 
 	handleAddBook() {
@@ -123,11 +124,35 @@ class App extends Component {
 		})
 	}
 
-	handleRemoveBook(ind) {
+	handleRemoveBook(bookInd) {
 		this.setState(prevState => {
 			const newState = {
-				books: prevState.books.filter((item, index) => {
-					return index !== ind;
+				books: prevState.books.filter((book, ind) => {
+					return ind !== bookInd;
+				})
+			};
+			return newState;
+		})
+	}
+
+	handleGenreUpdate(bookInd, genreInd, value) {
+		this.setState(prevState => {
+			const newState = {
+				books: prevState.books.map((book, ind) => {
+					if (ind !== bookInd) {
+						return book;
+					} else {
+						book = {
+							...book,
+							genres: book.genres.map((genre, ind) => {
+								if (ind === genreInd) {
+									genre = value
+								}
+								return genre;
+							})
+						}
+						return book;
+					}
 				})
 			};
 			return newState;
@@ -199,6 +224,7 @@ class App extends Component {
 					handleBookUpdate={this.handleBookUpdate}
 					handleAddBook={this.handleAddBook}
 					handleRemoveBook={this.handleRemoveBook}
+					handleGenreUpdate={this.handleGenreUpdate}
 					handleAddGenre={this.handleAddGenre}
 					handleRemoveGenre={this.handleRemoveGenre}
 				/>
