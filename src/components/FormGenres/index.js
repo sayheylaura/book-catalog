@@ -11,12 +11,12 @@ class FormGenres extends Component {
 	}
 
 	onAddGenre() {
-		const { parentInd, handleAddGenre } = this.props;
-		handleAddGenre(parentInd);
+		const { bookInd, handleAddGenre } = this.props;
+		handleAddGenre(bookInd);
 	}
 
 	render() {
-		const { genres } = this.props;
+		const { bookInd, genres, handleRemoveGenre } = this.props;
 
 		return (
 			<div className="form__genres-wrapper">
@@ -30,8 +30,10 @@ class FormGenres extends Component {
 							<FormGenreItem
 								key={ind}
 								ind={ind}
+								bookInd={bookInd}
 								genres={genres}
 								genre={genre}
+								handleRemoveGenre={handleRemoveGenre}
 							/>
 						);
 					})}
@@ -50,11 +52,12 @@ class FormGenres extends Component {
 }
 
 FormGenres.propTypes = {
-	parentInd: PropTypes.number.isRequired,
+	bookInd: PropTypes.number.isRequired,
 	genres: PropTypes.arrayOf(
 		PropTypes.string
 	).isRequired,
-	handleAddGenre: PropTypes.func.isRequired
+	handleAddGenre: PropTypes.func.isRequired,
+	handleRemoveGenre: PropTypes.func.isRequired
 }
 
 export default FormGenres;

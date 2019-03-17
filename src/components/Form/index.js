@@ -10,7 +10,8 @@ class Form extends Component {
 			handleBookUpdate,
 			handleAddBook,
 			handleRemoveBook,
-			handleAddGenre
+			handleAddGenre,
+			handleRemoveGenre
 		} = this.props;
 
 		return (
@@ -26,6 +27,7 @@ class Form extends Component {
 								handleBookUpdate={handleBookUpdate}
 								handleRemoveBook={handleRemoveBook}
 								handleAddGenre={handleAddGenre}
+								handleRemoveGenre={handleRemoveGenre}
 							/>
 						);
 					})}
@@ -50,7 +52,8 @@ Form.propTypes = {
 	handleBookUpdate: PropTypes.func.isRequired,
 	handleAddBook: PropTypes.func.isRequired,
 	handleRemoveBook: PropTypes.func.isRequired,
-	handleAddGenre: PropTypes.func.isRequired
+	handleAddGenre: PropTypes.func.isRequired,
+	handleRemoveGenre: PropTypes.func.isRequired
 }
 
 export default Form;

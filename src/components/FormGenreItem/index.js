@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Input from '../Input';
 import Button from '../Button';
 
 class FormGenreItem extends Component {
+	constructor(props) {
+		super(props);
+
+		this.onRemoveGenre = this.onRemoveGenre.bind(this);
+	}
+
+	onRemoveGenre() {
+		const { bookInd, ind, handleRemoveGenre } = this.props;
+		handleRemoveGenre(bookInd, ind);
+	}
+
 	render() {
 		const { ind, genres, genre } = this.props;
 		return (
@@ -22,13 +34,22 @@ class FormGenreItem extends Component {
 				<Button
 					buttonType="button"
 					buttonStyles="btn btn-remove"
-					handleBtnClick={this.onRemoveItem}
+					handleBtnClick={this.onRemoveGenre}
 				>
 					Remove genre
 				</Button>
 			</li>
 		);
 	}
+}
+FormGenreItem.propTypes = {
+	ind: PropTypes.number.isRequired,
+	bookInd: PropTypes.number.isRequired,
+	genres: PropTypes.arrayOf(
+		PropTypes.string
+	).isRequired,
+	genre: PropTypes.string.isRequired,
+	handleRemoveGenre: PropTypes.func.isRequired
 }
 
 export default FormGenreItem;

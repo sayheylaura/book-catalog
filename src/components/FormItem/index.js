@@ -28,7 +28,8 @@ class FormItem extends Component {
 			ind,
 			books,
 			book,
-			handleAddGenre
+			handleAddGenre,
+			handleRemoveGenre
 		} = this.props;
 
 		const {
@@ -68,9 +69,10 @@ class FormItem extends Component {
 				/>
 
 				<FormGenres
-					parentInd={ind}
+					bookInd={ind}
 					genres={genres}
 					handleAddGenre={handleAddGenre}
+					handleRemoveGenre={handleRemoveGenre}
 				/>
 
 				<Button
@@ -93,7 +95,8 @@ FormItem.propTypes = {
 	book: PropTypes.object.isRequired,
 	handleBookUpdate: PropTypes.func.isRequired,
 	handleRemoveBook: PropTypes.func.isRequired,
-	handleAddGenre: PropTypes.func.isRequired
+	handleAddGenre: PropTypes.func.isRequired,
+	handleRemoveGenre: PropTypes.func.isRequired
 }
 
 export default FormItem;

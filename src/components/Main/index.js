@@ -18,7 +18,8 @@ class Main extends Component {
 			handleBookUpdate,
 			handleAddBook,
 			handleRemoveBook,
-			handleAddGenre
+			handleAddGenre,
+			handleRemoveGenre
 		} = this.props;
 
 		const contentToRender = (
@@ -57,6 +58,7 @@ class Main extends Component {
 									handleAddBook={handleAddBook}
 									handleRemoveBook={handleRemoveBook}
 									handleAddGenre={handleAddGenre}
+									handleRemoveGenre={handleRemoveGenre}
 								/>
 							);
 						}}
@@ -83,7 +85,8 @@ Main.propTypes = {
 	handleBookUpdate: PropTypes.func.isRequired,
 	handleAddBook: PropTypes.func.isRequired,
 	handleRemoveBook: PropTypes.func.isRequired,
-	handleAddGenre: PropTypes.func.isRequired
+	handleAddGenre: PropTypes.func.isRequired,
+	handleRemoveGenre: PropTypes.func.isRequired
 }
 
 export default Main;

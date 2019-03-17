@@ -24,6 +24,7 @@ class App extends Component {
 		this.handleAddBook = this.handleAddBook.bind(this);
 		this.handleRemoveBook = this.handleRemoveBook.bind(this);
 		this.handleAddGenre = this.handleAddGenre.bind(this);
+		this.handleRemoveGenre = this.handleRemoveGenre.bind(this);
 	}
 
 	componentDidMount() {
@@ -133,13 +134,13 @@ class App extends Component {
 		})
 	}
 
-	handleAddGenre(parentInd) {
+	handleAddGenre(bookInd) {
 		const newItem = "";
 
 		this.setState(prevState => {
 			const newState = {
 				books: prevState.books.map((book, ind) => {
-					if(ind !== parentInd) {
+					if (ind !== bookInd) {
 						return book;
 					} else {
 						book = {
@@ -151,6 +152,27 @@ class App extends Component {
 				})
 			};
 			return newState
+		})
+	}
+
+	handleRemoveGenre(bookInd, genreInd) {
+		this.setState(prevState => {
+			const newState = {
+				books: prevState.books.map((book, ind) => {
+					if (ind !== bookInd) {
+						return book;
+					} else {
+						book = {
+							...book,
+							genres: book.genres.filter((genre, ind) => {
+								return ind !== genreInd
+							})
+						}
+						return book;
+					}
+				})
+			}
+			return newState;
 		})
 	}
 
@@ -178,6 +200,7 @@ class App extends Component {
 					handleAddBook={this.handleAddBook}
 					handleRemoveBook={this.handleRemoveBook}
 					handleAddGenre={this.handleAddGenre}
+					handleRemoveGenre={this.handleRemoveGenre}
 				/>
 			</div>
 		);
