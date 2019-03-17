@@ -1,19 +1,42 @@
 .menu {
-  padding: 20px;
+	padding: 15px;
 }
 
 .menu__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
+	width: 180px;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	font-weight: 600;
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
 }
 
 .menu__link {
-  color: black;
-  text-decoration: none;
+	color: #343330;
+	text-decoration: none;
+	position: relative;
 }
 
 .menu__item {
-  padding: 10px;
+	&:hover {
+		color: darken(#343330, 10%);
+	}
+
+	&::before {
+		width: 0;
+		height: 2px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		background-color: #343330;
+		transition: all cubic-bezier(0.1, 0.79, 0.24, 0.93) 0.3s;
+		content: "";
+	}
+
+	&:hover::before {
+		width: 100%;
+		background-color: darken(#343330, 10%);
+	}
 }
