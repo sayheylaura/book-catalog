@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { book } from '../../services/propTypes';
 
 class BookItem extends Component {
 	render() {
-		const {
-			books,
-			book,
-			ind
-		} = this.props;
+		const { filteredBooks, book } = this.props;
 
 		const {
+			id,
 			title,
 			price,
 			genres
@@ -17,7 +15,7 @@ class BookItem extends Component {
 
 		return (
 			<article className="book">
-				<h2 className="book__description">{`Book ${ind + 1} of ${books.length}`}</h2>
+				<h2 className="book__description">{`Book ${id} of ${filteredBooks.length}`}</h2>
 				<div className="book__title">Title: {title}</div>
 				<div className="book__price">Price: ${price}</div>
 				<div className="book__genres-wrapper">
@@ -36,11 +34,10 @@ class BookItem extends Component {
 }
 
 BookItem.propTypes = {
-	books: PropTypes.arrayOf(
-		PropTypes.object.isRequired
+	filteredBooks: PropTypes.arrayOf(
+		PropTypes.shape(book).isRequired
 	).isRequired,
-	book: PropTypes.object.isRequired,
-	ind: PropTypes.number.isRequired
+	book: PropTypes.shape(book).isRequired
 }
 
 export default BookItem;

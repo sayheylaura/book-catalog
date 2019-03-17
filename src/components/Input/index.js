@@ -44,7 +44,10 @@ Input.propTypes = {
 	inputStyles: PropTypes.string.isRequired,
 	inputType: PropTypes.string.isRequired,
 	inputName: PropTypes.string.isRequired,
-	inputValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+	inputValue: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number
+	]).isRequired,
 	example: PropTypes.string,
 	isChecked: PropTypes.bool,
 	handleInputChange: PropTypes.func.isRequired

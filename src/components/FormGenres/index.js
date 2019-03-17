@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { book } from '../../services/propTypes';
 import Button from '../Button';
 import FormGenreItem from '../FormGenreItem';
 
@@ -65,6 +66,9 @@ class FormGenres extends Component {
 
 FormGenres.propTypes = {
 	bookInd: PropTypes.number.isRequired,
+	books: PropTypes.arrayOf(
+		PropTypes.shape(book).isRequired
+	).isRequired,
 	genres: PropTypes.arrayOf(
 		PropTypes.string
 	).isRequired,

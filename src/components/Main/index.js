@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
+import { mainPropTypes } from '../../services/propTypes';
 import Filters from '../Filters';
 import BookList from '../BookList';
 import Loader from '../Loader';
@@ -24,7 +24,7 @@ class Main extends Component {
 			handleRemoveGenre
 		} = this.props;
 
-		const contentToRender = (
+		const homeContent = (
 			<Fragment>
 				<Filters
 					allGenres={allGenres}
@@ -41,13 +41,7 @@ class Main extends Component {
 					<Route
 						exact
 						path="/"
-						render={() => {
-							if (isLoading) {
-								return <Loader />
-							} else {
-								return contentToRender;
-							}
-						}}
+						render={() => isLoading ? <Loader /> : homeContent}
 					/>
 
 					<Route
@@ -73,26 +67,6 @@ class Main extends Component {
 	}
 }
 
-Main.propTypes = {
-	books: PropTypes.arrayOf(
-		PropTypes.object.isRequired
-	).isRequired,
-	filteredBooks: PropTypes.arrayOf(
-		PropTypes.object.isRequired
-	).isRequired,
-	allGenres: PropTypes.arrayOf(
-		PropTypes.string.isRequired
-	).isRequired,
-	filters: PropTypes.object.isRequired,
-	isLoading: PropTypes.bool.isRequired,
-	updateGenres: PropTypes.func.isRequired,
-	handleBoxChange: PropTypes.func.isRequired,
-	handleBookUpdate: PropTypes.func.isRequired,
-	handleAddBook: PropTypes.func.isRequired,
-	handleRemoveBook: PropTypes.func.isRequired,
-	handleGenreUpdate: PropTypes.func.isRequired,
-	handleAddGenre: PropTypes.func.isRequired,
-	handleRemoveGenre: PropTypes.func.isRequired
-}
+Main.propTypes = mainPropTypes;
 
 export default Main;

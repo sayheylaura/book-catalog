@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { book } from '../../services/propTypes';
 import FormItem from '../FormItem';
 import Button from '../Button';
 
@@ -61,7 +62,7 @@ class Form extends Component {
 
 Form.propTypes = {
 	books: PropTypes.arrayOf(
-		PropTypes.object.isRequired
+		PropTypes.shape(book).isRequired
 	).isRequired,
 	updateGenres: PropTypes.func.isRequired,
 	handleBookUpdate: PropTypes.func.isRequired,

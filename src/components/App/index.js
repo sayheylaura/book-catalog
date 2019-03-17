@@ -109,7 +109,7 @@ class App extends Component {
 			const newState = {
 				books: prevState.books.map((book, ind) => {
 					if (ind === bookInd) {
-						if (name === "price" && value) {
+						if (name === 'price' && value) {
 							book = {
 								...book,
 								[name]: parseFloat(value)
@@ -131,8 +131,8 @@ class App extends Component {
 	handleAddBook(arr) {
 		const newBook = {
 			id: arr.length + 1,
-			title: "",
-			price: "",
+			title: '',
+			price: '',
 			genres: []
 		}
 
@@ -180,7 +180,7 @@ class App extends Component {
 	}
 
 	handleAddGenre(bookInd) {
-		const newItem = "";
+		const newItem = '';
 
 		this.setState(prevState => {
 			const newState = {
@@ -229,14 +229,12 @@ class App extends Component {
 			isLoading
 		} = this.state;
 
-		const filteredBooks = this.filterBooksByGenre();
-
 		return (
 			<div className="App">
 				<Header />
 				<Main
 					books={books}
-					filteredBooks={filteredBooks}
+					filteredBooks={this.filterBooksByGenre()}
 					allGenres={allGenres}
 					filters={filters}
 					isLoading={isLoading}

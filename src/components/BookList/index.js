@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { book } from '../../services/propTypes';
 import BookItem from '../BookItem';
 
 class BookList extends Component {
@@ -12,9 +13,8 @@ class BookList extends Component {
 						return (
 							<li key={ind} className="books__item">
 								<BookItem
-									books={filteredBooks}
+									filteredBooks={filteredBooks}
 									book={book}
-									ind={ind}
 								/>
 							</li>
 						);
@@ -27,7 +27,7 @@ class BookList extends Component {
 
 BookList.propTypes = {
 	filteredBooks: PropTypes.arrayOf(
-		PropTypes.object.isRequired
+		PropTypes.shape(book).isRequired
 	).isRequired
 }
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { book } from '../../services/propTypes';
 import Input from '../Input';
 import Button from '../Button';
 import FormGenres from '../FormGenres';
@@ -35,6 +36,7 @@ class FormItem extends Component {
 		} = this.props;
 
 		const {
+			id,
 			title,
 			price,
 			genres
@@ -43,7 +45,7 @@ class FormItem extends Component {
 		return (
 			<li className="form__item">
 				<h2 className="form__item-description">
-					{`Book ${bookInd + 1} of ${books.length}`}
+					{`Book ${id} of ${books.length}`}
 				</h2>
 
 				<Input
@@ -95,9 +97,9 @@ class FormItem extends Component {
 FormItem.propTypes = {
 	bookInd: PropTypes.number.isRequired,
 	books: PropTypes.arrayOf(
-		PropTypes.object.isRequired
+		PropTypes.shape(book).isRequired
 	).isRequired,
-	book: PropTypes.object.isRequired,
+	book: PropTypes.shape(book).isRequired,
 	updateGenres: PropTypes.func.isRequired,
 	handleBookUpdate: PropTypes.func.isRequired,
 	handleRemoveBook: PropTypes.func.isRequired,

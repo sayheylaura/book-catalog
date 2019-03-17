@@ -39,7 +39,11 @@ Filters.propTypes = {
 	allGenres: PropTypes.arrayOf(
 		PropTypes.string.isRequired
 	).isRequired,
-	filters: PropTypes.object.isRequired,
+	filters: PropTypes.objectOf(
+		PropTypes.arrayOf(
+			PropTypes.string.isRequired
+		).isRequired
+	).isRequired,
 	handleBoxChange: PropTypes.func.isRequired
 }
 
