@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { mainPropTypes } from '../../services/propTypes';
+import './Main.scss';
 import Filters from '../Filters';
 import BookList from '../BookList';
 import Loader from '../Loader';

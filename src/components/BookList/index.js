@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { book } from '../../services/propTypes';
+import './BookList.scss';
 import BookItem from '../BookItem';
 
 class BookList extends Component {

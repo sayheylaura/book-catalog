@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { book } from '../../services/propTypes';
+import './BookItem.scss';
 
 class BookItem extends Component {
 	render() {
@@ -18,17 +19,18 @@ class BookItem extends Component {
 
 		return (
 			<li className="books__item">
-				<h2 className="book__description">{`Book ${bookInd + 1} of ${filteredBooks.length}`}</h2>
-				<h3 className="book__title">
+				<h2 className="book__title">{`Book ${bookInd + 1} of ${filteredBooks.length}`}</h2>
+
+				<h3 className="book__subtitle">
 					Title:<span className="book__content"> {title ? title : 'no data'}</span>
 				</h3>
 
-				<h3 className="book__title">
+				<h3 className="book__subtitle">
 					Price:<span className="book__content"> {price ? `$${price}` : 'no data'}</span>
 				</h3>
 
 				<div className="book__genres-wrapper">
-					<h3 className="book__title">Genres:</h3>
+					<h3 className="book__subtitle">Genres:</h3>
 
 					{(genres.length === 0) ? (
 						<span className="book__content">no data</span>

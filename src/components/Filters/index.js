@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './Filters.scss';
 import Input from '../Input';
 
 class Filters extends Component {
@@ -12,24 +13,26 @@ class Filters extends Component {
 
 		return (
 			<section className="app__filters">
-				<p className="filters__description">Filter books by genre</p>
+				<h2 className="filters__description">Filter books by genre</h2>
 
-				{allGenres.map((genre, ind) => {
-					return (
-						<Input
-							key={ind}
-							labelContent={genre}
-							labelStyles="checkbox__label"
-							labelContentStyles="checkbox__label-title"
-							inputStyles="checkbox__box"
-							inputType="checkbox"
-							inputName={genre}
-							inputValue={genre}
-							isChecked={filters.genres.includes(genre)}
-							handleInputChange={handleBoxChange}
-						/>
-					);
-				})}
+				<div className="filters__wrapper">
+					{allGenres.map((genre, ind) => {
+						return (
+							<Input
+								key={ind}
+								labelContent={genre}
+								labelStyles="checkbox__label"
+								labelContentStyles="checkbox__label-title"
+								inputStyles="checkbox__box"
+								inputType="checkbox"
+								inputName={genre}
+								inputValue={genre}
+								isChecked={filters.genres.includes(genre)}
+								handleInputChange={handleBoxChange}
+							/>
+						);
+					})}
+				</div>
 			</section>
 		);
 	}
