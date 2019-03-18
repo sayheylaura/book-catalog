@@ -4,8 +4,8 @@ const defaultBooks = [
 		title: 'A Game of Thrones',
 		price: 9.99,
 		genres: [
-			'Fantasy',
-			'Political novel'
+			'fantasy',
+			'political novel'
 		]
 	},
 	{
@@ -13,7 +13,7 @@ const defaultBooks = [
 		title: 'Women in Science',
 		price: 11.55,
 		genres: [
-			'Science'
+			'science'
 		]
 	},
 	{
@@ -21,7 +21,7 @@ const defaultBooks = [
 		title: 'The Pillars of the Earth',
 		price: 8.99,
 		genres: [
-			'Historical fiction'
+			'historical fiction'
 		]
 	},
 	{
@@ -29,7 +29,7 @@ const defaultBooks = [
 		title: 'Northern Lights',
 		price: 14.5,
 		genres: [
-			'Fantasy'
+			'fantasy'
 		]
 	},
 	{
@@ -37,7 +37,7 @@ const defaultBooks = [
 		title: 'Contact',
 		price: 28.88,
 		genres: [
-			'Science fiction'
+			'science fiction'
 		]
 	}
 ]

@@ -42,7 +42,7 @@ class BookItem extends Component {
 											{genre}
 										</li>
 									) : (
-										<span className="book__content">no data</span>
+										<span key={ind} className="book__content">no data</span>
 									)
 								))}
 							</ul>
