@@ -6,6 +6,20 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	&:hover {
+		transition: all 150ms linear;
+		opacity: 0.85;
+	}
+
+	&:active {
+		transition: all 150ms linear;
+		opacity: 0.75;
+	}
+
+	&:focus {
+		outline: none;
+	}
 }
 
 .btn--small {
@@ -23,10 +37,28 @@
 
 .btn--add {
 	background-color: #818343;
+
+	&:hover {
+		background-color: lighten(#818343, 10%);
+		opacity: 1;
+	}
+	&:active {
+		background-color: darken(#818343, 10%);
+		opacity: 1;
+	}
 }
 
 .btn--remove {
 	background-color: rgb(145, 45, 45);
+
+	&:hover {
+		background-color: lighten(rgb(145, 45, 45), 10%);
+		opacity: 1;
+	}
+	&:active {
+		background-color: darken(rgb(145, 45, 45), 10%);
+		opacity: 1;
+	}
 }
 
 .btn--remove-genre {
