@@ -1,3 +1,4 @@
+import 'react-app-polyfill/ie9';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
@@ -5,8 +6,8 @@ import './index.scss';
 import App from './components/App';
 
 ReactDOM.render(
-  <HashRouter>
-    <App />
-  </HashRouter>,
-  document.getElementById('root')
+	<HashRouter>
+		<App />
+	</HashRouter>,
+	document.getElementById('root')
 );
