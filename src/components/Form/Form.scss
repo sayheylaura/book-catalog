@@ -1,0 +1,21 @@
+.app__form {
+	padding: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.form__books-list {
+	width: 100%;
+	margin: 0 0 30px;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	grid-gap: 15px;
+	grid-template-columns: minmax(auto, 260px);
+	justify-content: center;
+
+	@media all and (min-width: 600px) {
+		grid-template-columns: 1fr;
+	}
+}

@@ -35,14 +35,18 @@ class BookItem extends Component {
 					{(genres.length === 0) ? (
 						<span className="book__content">no data</span>
 					) : (
-						<ul className="genres__list">
-							{genres.map((genre, ind) => (
-								<li key={ind} className="genres__item">
-									{genre ? genre : 'no data'}
-								</li>
-							))}
-						</ul>
-					)}
+							<ul className="genres__list">
+								{genres.map((genre, ind) => (
+									genre ? (
+										<li key={ind} className="genres__item">
+											{genre}
+										</li>
+									) : (
+										<span className="book__content">no data</span>
+									)
+								))}
+							</ul>
+						)}
 				</div>
 			</li>
 		);

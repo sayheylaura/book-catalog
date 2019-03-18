@@ -1,0 +1,10 @@
+.form__genres-item {
+	max-width: 260px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	@media all and (min-width: 600px) {
+		margin-right: 10px;
+	}
+}

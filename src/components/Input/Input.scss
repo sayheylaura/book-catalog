@@ -5,3 +5,31 @@
 	justify-content: flex-end;
 	align-items: center;
 }
+
+.field__label {
+	margin-bottom: 10px;
+	display: flex;
+	flex-direction: column;
+
+	@media all and (min-width: 600px) {
+		margin-right: 5px;
+	}
+}
+
+.field__label-title {
+	margin-bottom: 5px;
+	font-size: 18px;
+}
+
+.field__box {
+	padding: 5px;
+	border: 1px solid #dcdcdc;
+	border-radius: 5px;
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 14px;
+
+	&:focus {
+		border-bottom: 4px solid #dcdcdc;
+		outline: none;
+	}
+}

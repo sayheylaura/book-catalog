@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { book } from '../../services/propTypes';
+import './Form.scss';
 import FormItem from '../FormItem';
 import Button from '../Button';
 
@@ -50,10 +51,10 @@ class Form extends Component {
 
 				<Button
 					buttonType="button"
-					buttonStyles="btn btn-add"
+					buttonStyles="btn btn--large btn--add"
 					handleBtnClick={this.onAddBook}
 				>
-					Add book
+					<i className="fas fa-plus"></i>
 				</Button>
 			</form>
 		);

@@ -1,0 +1,15 @@
+.form__genres-title {
+	margin: 0 0 10px;
+	color: #45462a;
+}
+
+.form__genres-list {
+	margin-bottom: 5px;
+	padding: 0;
+	list-style: none;
+
+	@media all and (min-width: 600px) {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}

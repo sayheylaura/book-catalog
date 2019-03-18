@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { book } from '../../services/propTypes';
+import './FormItem.scss';
 import Input from '../Input';
 import Button from '../Button';
 import FormGenres from '../FormGenres';
@@ -42,52 +43,62 @@ class FormItem extends Component {
 		} = book;
 
 		return (
-			<li className="form__item">
-				<h2 className="form__item-description">
-					{`Book ${bookInd + 1} of ${books.length}`}
-				</h2>
+			<li className="form__books-item">
+				<div className="form-item__title-wrapper">
+					<h2 className="form-item__title">
+						{`Book ${bookInd + 1} of ${books.length}`}
+					</h2>
 
-				<Input
-					labelContent="Title"
-					labelStyles="field__label"
-					labelContentStyles="field__label-title"
-					inputStyles="field__box"
-					inputType="text"
-					inputName="title"
-					inputValue={title}
-					example="Ex: The Martian"
-					handleInputChange={this.onBookUpdate}
-				/>
+					<Button
+						buttonType="button"
+						buttonStyles="btn btn--medium btn--remove"
+						handleBtnClick={this.onRemoveBook}
+					>
+						<i className="fas fa-trash-alt"></i>
+					</Button>
+				</div>
 
-				<Input
-					labelContent="Price"
-					labelStyles="field__label"
-					labelContentStyles="field__label-title"
-					inputStyles="field__box"
-					inputType="number"
-					inputName="price"
-					inputValue={price}
-					example="Ex: 9.99"
-					handleInputChange={this.onBookUpdate}
-				/>
+				<div className="form-item__content-wrapper">
+					<div className="form-item__fields-wrapper">
+						<h3 className="form__genres-title">
+							General info
+						</h3>
 
-				<FormGenres
-					bookInd={bookInd}
-					books={books}
-					genres={genres}
-					updateGenres={updateGenres}
-					handleGenreUpdate={handleGenreUpdate}
-					handleAddGenre={handleAddGenre}
-					handleRemoveGenre={handleRemoveGenre}
-				/>
+						<Input
+							labelContent="Title"
+							labelStyles="field__label"
+							labelContentStyles="field__label-title"
+							inputStyles="field__box"
+							inputType="text"
+							inputName="title"
+							inputValue={title}
+							example="Ex: The Martian"
+							handleInputChange={this.onBookUpdate}
+						/>
 
-				<Button
-					buttonType="button"
-					buttonStyles="btn btn-remove"
-					handleBtnClick={this.onRemoveBook}
-				>
-					Remove book
-				</Button>
+						<Input
+							labelContent="Price"
+							labelStyles="field__label"
+							labelContentStyles="field__label-title"
+							inputStyles="field__box"
+							inputType="number"
+							inputName="price"
+							inputValue={price}
+							example="Ex: 9.99"
+							handleInputChange={this.onBookUpdate}
+						/>
+					</div>
+
+					<FormGenres
+						bookInd={bookInd}
+						books={books}
+						genres={genres}
+						updateGenres={updateGenres}
+						handleGenreUpdate={handleGenreUpdate}
+						handleAddGenre={handleAddGenre}
+						handleRemoveGenre={handleRemoveGenre}
+					/>
+				</div>
 			</li>
 		);
 	}

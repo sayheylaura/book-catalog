@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { book } from '../../services/propTypes';
+import './FormGenres.scss';
 import Button from '../Button';
 import FormGenreItem from '../FormGenreItem';
 
@@ -12,7 +13,7 @@ class FormGenres extends Component {
 	}
 
 	componentDidUpdate(prevState) {
-		if(this.props.books !== prevState.books) {
+		if (this.props.books !== prevState.books) {
 			this.props.updateGenres();
 		}
 	}
@@ -54,10 +55,10 @@ class FormGenres extends Component {
 
 				<Button
 					buttonType="button"
-					buttonStyles="btn btn-add"
+					buttonStyles="btn btn--small btn--add"
 					handleBtnClick={this.onAddGenre}
 				>
-					Add genre
+					<i className="fas fa-plus"></i>
 				</Button>
 			</div>
 		);

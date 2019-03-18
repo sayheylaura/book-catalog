@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './FormGenreItem.scss';
 import Input from '../Input';
 import Button from '../Button';
 
@@ -40,10 +41,10 @@ class FormGenreItem extends Component {
 
 				<Button
 					buttonType="button"
-					buttonStyles="btn btn-remove"
+					buttonStyles="btn btn--small btn--remove btn--remove-genre"
 					handleBtnClick={this.onRemoveGenre}
 				>
-					Remove genre
+					<i className="fas fa-trash-alt"></i>
 				</Button>
 			</li>
 		);
