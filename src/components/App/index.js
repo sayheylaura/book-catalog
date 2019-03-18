@@ -46,7 +46,7 @@ class App extends Component {
 		for (const book of books) {
 			const genres = book.genres;
 			for (const genre of genres) {
-				if ((genre !== '') && (!newGenres.includes(genre))) {
+				if ((genre !== '') && (!(newGenres.indexOf(genre) > -1))) {
 					newGenres.push(genre);
 				}
 			}
@@ -94,7 +94,7 @@ class App extends Component {
 			for (const book of books) {
 				const genres = book.genres;
 				for (const genre of genres) {
-					if ((selectedGenres.includes(genre)) && (!filteredBooks.includes(book))) {
+					if ((selectedGenres.indexOf(genre) > -1) && (!(filteredBooks.indexOf(book) > -1))) {
 						filteredBooks.push(book);
 					}
 				}

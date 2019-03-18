@@ -27,7 +27,7 @@ class Filters extends Component {
 								inputType="checkbox"
 								inputName={genre}
 								inputValue={genre}
-								isChecked={filters.genres.includes(genre)}
+								isChecked={filters.genres.indexOf(genre) > -1}
 								handleInputChange={handleBoxChange}
 							/>
 						);
