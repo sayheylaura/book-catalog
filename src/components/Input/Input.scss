@@ -6,6 +6,10 @@
 	align-items: center;
 }
 
+.checkbox__label-title {
+	text-transform: capitalize;
+}
+
 .field__label {
 	margin-bottom: 10px;
 	display: flex;
